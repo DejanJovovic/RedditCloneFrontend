@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { APIService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -18,6 +20,10 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
+  }
+
+  signupSubmit() {
+
   }
 
 }
