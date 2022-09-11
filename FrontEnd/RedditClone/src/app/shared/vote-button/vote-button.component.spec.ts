@@ -11,9 +11,7 @@ describe('VoteButtonComponent', () => {
       declarations: [ VoteButtonComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(VoteButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListSubredditsComponent } from './list-subreddits.component';
 
@@ -11,9 +11,7 @@ describe('ListSubredditsComponent', () => {
       declarations: [ ListSubredditsComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ListSubredditsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

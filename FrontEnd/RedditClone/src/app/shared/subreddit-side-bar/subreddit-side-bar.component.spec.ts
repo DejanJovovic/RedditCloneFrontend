@@ -11,9 +11,7 @@ describe('SubredditSideBarComponent', () => {
       declarations: [ SubredditSideBarComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SubredditSideBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

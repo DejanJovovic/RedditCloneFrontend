@@ -11,9 +11,7 @@ describe('SideBarComponent', () => {
       declarations: [ SideBarComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SideBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

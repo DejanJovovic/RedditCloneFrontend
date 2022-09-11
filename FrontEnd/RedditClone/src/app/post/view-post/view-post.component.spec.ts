@@ -11,9 +11,7 @@ describe('ViewPostComponent', () => {
       declarations: [ ViewPostComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ViewPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

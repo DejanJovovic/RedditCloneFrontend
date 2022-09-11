@@ -11,9 +11,7 @@ describe('PostTileComponent', () => {
       declarations: [ PostTileComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(PostTileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

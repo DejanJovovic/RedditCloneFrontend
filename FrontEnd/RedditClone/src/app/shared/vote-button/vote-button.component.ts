@@ -16,13 +16,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class VoteButtonComponent implements OnInit {
 
-  @Input() post: PostModel;
+  @Input() post!: PostModel;
   votePayload: VotePayload;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
-  upvoteColor?: string;
-  downvoteColo?: string;
-  isLoggedIn?: boolean;
+  upvoteColor!: string;
+  downvoteColo!: string;
+  isLoggedIn!: boolean;
 
   constructor(private voteService: VoteService,
     private authService: AuthService,
@@ -35,14 +35,14 @@ export class VoteButtonComponent implements OnInit {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.updateVoteDetails();
   }
 
   upvotePost() {
     this.votePayload.voteType = VoteType.UPVOTE;
     this.vote();
-    this.downvoteColor = '';
+    this.downvoteColo = '';
   }
 
   downvotePost() {

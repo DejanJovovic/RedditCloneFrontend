@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupRequestPayload! : SignupRequestPayload;
-  signupForm!: FormGroup;
+  signupForm!: any;
 
   constructor(private authService: AuthService, private router: Router,
     private toastr: ToastrService) {

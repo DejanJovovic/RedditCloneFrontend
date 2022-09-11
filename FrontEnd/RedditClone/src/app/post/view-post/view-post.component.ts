@@ -15,14 +15,14 @@ import { CommentService } from 'src/app/comment/comment.service';
 export class ViewPostComponent implements OnInit {
 
   postId: number;
-  post: PostModel;
-  commentForm: FormGroup;
+  post!: PostModel;
+  commentForm: any;
   commentPayload: CommentPayload;
   comments?: CommentPayload[];
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
     private commentService: CommentService, private router: Router) {
-    this.postId = this.activateRoute.snapshot.params.id;
+    this.postId = this.activateRoute.snapshot.params['id'];
 
     this.commentForm = new FormGroup({
       text: new FormControl('', Validators.required)

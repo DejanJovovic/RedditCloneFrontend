@@ -11,9 +11,7 @@ describe('CreateSubredditComponent', () => {
       declarations: [ CreateSubredditComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(CreateSubredditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

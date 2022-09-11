@@ -11,7 +11,7 @@ import { throwError } from 'rxjs';
   styleUrls: ['./create-subreddit.component.css']
 })
 export class CreateSubredditComponent implements OnInit {
-  createSubredditForm: FormGroup;
+  createSubredditForm: any;
   subredditModel: SubredditModel;
   title = new FormControl('');
   description = new FormControl('');
