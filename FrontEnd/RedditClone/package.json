@@ -1,5 +1,5 @@
 {
-  "name": "clone",
+  "name": "reddit-clone",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -15,19 +15,14 @@
     "@angular/compiler": "^14.1.0",
     "@angular/core": "^14.1.0",
     "@angular/forms": "^14.1.0",
-    "@angular/localize": "^14.1.0",
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
-    "@popperjs/core": "^2.10.2",
-    "@tinymce/tinymce-angular": "^7.0.0",
-    "bootstrap": "^5.2.0",
-    "ngx-toastr": "^15.0.0",
-    "ngx-webstorage": "^10.0.1",
+    "@types/jquery": "^3.5.14",
+    "ngx-localstorage": "^3.4.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

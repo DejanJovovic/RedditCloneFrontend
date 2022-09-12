@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginRequestPayload } from './login-request.payload';
-import { AuthService } from '../shared/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { loginRequest } from './loginRequest';
 
 @Component({
   selector: 'app-login',
@@ -13,47 +12,37 @@ import { throwError } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: any;
-  loginRequestPayload!: LoginRequestPayload;
-  registerSuccessMessage!: string;
-  isError!: boolean;
+  loginForm!: FormGroup;
+  loginRequest: loginRequest;
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
-    private router: Router, private toastr: ToastrService) {
-    this.loginRequestPayload = {
+  constructor(private formBuilder: FormBuilder,private http: HttpClient, private router: Router) {
+    this.loginRequest = {
       username: '',
       password: ''
-    };
+    }
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+      username: new FormControl(''),
+      password: new FormControl(''),
+
+    })
+  }
+
+  submit() {
+    const loginHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     });
 
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        if (params['registered'] !== undefined && params['registered'] === 'true') {
-          this.toastr.success('Signup Successful');
-          this.registerSuccessMessage = 'Please Check your inbox for activation email '
-            + 'activate your account before you Login!';
-        }
+    this.http.post('http://localhost:8080/api/users/login', JSON.stringify(this.loginForm), {withCredentials: true})
+      .subscribe((res: any) => {
+        AuthInterceptor.accessToken = res.token;
+
+        this.router.navigate(['/posts']);
       });
   }
-
-  login() {
-    this.loginRequestPayload.username = this.loginForm.get('username').value;
-    this.loginRequestPayload.password = this.loginForm.get('password').value;
-
-    this.authService.login(this.loginRequestPayload).subscribe(data => {
-      this.isError = false;
-      this.router.navigateByUrl('');
-      this.toastr.success('Login Successful');
-    }, error => {
-      this.isError = true;
-      throwError(error);
-    });
-  }
-
+  
+  
 }

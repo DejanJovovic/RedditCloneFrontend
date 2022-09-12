@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { SubredditModel } from 'src/app/subreddit/subreddit-response';
-import { Router } from '@angular/router';
-import { PostService } from 'src/app/shared/post.service';
-import { SubredditService } from 'src/app/subreddit/subreddit.service';
-import { throwError } from 'rxjs';
-import { CreatePostPayload } from './create-post.payload';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommunityModel } from 'src/app/community/community-response';
+import { CommunityService } from 'src/app/community/community.service';
+import { PostServiceService } from 'src/app/services/post.service.service';
+import { PostModel } from '../postModel';
 
 @Component({
   selector: 'app-create-post',
@@ -13,50 +11,39 @@ import { CreatePostPayload } from './create-post.payload';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  post: PostModel = new PostModel();
+  id?: number;
+  community!: CommunityModel;
 
-  createPostForm!: any;
-  postPayload!: CreatePostPayload;
-  subreddits!: Array<SubredditModel>;
+  constructor(private communityservice: CommunityService,private route: ActivatedRoute,private postService: PostServiceService, private router: Router) { }
 
-  constructor(private router: Router, private postService: PostService,
-    private subredditService: SubredditService) {
-    this.postPayload = {
-      postName: '',
-      url: '',
-      description: '',
-      subredditName: ''
-    }
-  }
-
-  ngOnInit() {
-    this.createPostForm = new FormGroup({
-      postName: new FormControl('', Validators.required),
-      subredditName: new FormControl('', Validators.required),
-      url: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-    });
-    this.subredditService.getAllSubreddits().subscribe((data) => {
-      this.subreddits = data;
-    }, error => {
-      throwError(error);
-    });
-  }
-
-  createPost() {
-    this.postPayload.postName = this.createPostForm.get('postName').value;
-    this.postPayload.subredditName = this.createPostForm.get('subredditName').value;
-    this.postPayload.url = this.createPostForm.get('url').value;
-    this.postPayload.description = this.createPostForm.get('description').value;
-
-    this.postService.createPost(this.postPayload).subscribe((data) => {
-      this.router.navigateByUrl('/');
-    }, error => {
-      throwError(error);
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.community = new CommunityModel();
+    this.communityservice.getCommunityById(this.id!).subscribe( data => {
+      this.community = data
     })
+   
   }
-
-  discardPost() {
-    this.router.navigateByUrl('/');
+  createPost(){
+    this.post.community = this.community
+    this.postService.createPost(this.post).subscribe( data =>{
+      console.log(data);
+      this.HomePage();
+      
+    }, 
+    error => console.log(error));
+    
+  }
+  HomePage(){
+    this.router.navigate(['/posts']);
+  }
+  onSubmit(){
+    console.log(this.post);
+    this.createPost();
+  }
+  cancel(){
+    this.router.navigate(['/posts']);
   }
 
 }

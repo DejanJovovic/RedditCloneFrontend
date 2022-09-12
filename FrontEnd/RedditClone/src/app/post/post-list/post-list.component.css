@@ -1,0 +1,67 @@
+.post{
+    --post-line-color: #ccc;    
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+  }
+  
+  .btnCommments:hover{
+    opacity: 0.65;
+    cursor: pointer;
+  }
+  
+  .post-title{
+    font-size: 28px;
+    font-weight: bold;
+    opacity: 1;
+  }
+  
+  .posturl, .postname{    
+    color: black;
+  }
+  
+  .subreddit-text{
+    font-weight: bold;
+  }
+  
+  .post-text{
+    margin-top: 10px;
+  }
+  .vote {
+    display: inline-block;
+    overflow: hidden;
+    width: 40px;
+    height: 25px;
+    cursor: pointer;
+    background: url('http://i.stack.imgur.com/iqN2k.png');
+    background-position: 0 -25px;
+  } 
+  
+  
+  .vote.on {
+    background-position: 0 2px;
+  }
+  .post-footer{
+    border-top: 1px;
+  }
+  .post{
+    margin:10px
+  }
+  
+  .upvote {
+    color: green;
+  }
+  .downvote {
+    color: red;
+  }
+  .upvote,.downvote {
+    cursor: pointer;
+    border-radius: 2px solid;
+  }
+  

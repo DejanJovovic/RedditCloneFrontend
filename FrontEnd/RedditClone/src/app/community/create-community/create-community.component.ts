@@ -1,0 +1,52 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommunityModel, CommunityModelEdit } from '../community-response';
+import { CommunityService } from '../community.service';
+
+@Component({
+  selector: 'app-create-community',
+  templateUrl: './create-community.component.html',
+  styleUrls: ['./create-community.component.css']
+})
+export class CreateCommunityComponent implements OnInit {
+
+  createCommunityForm: FormGroup;
+  communityModel: CommunityModelEdit;
+  name = new FormControl('');
+  description = new FormControl('');
+
+  constructor(private router: Router, private communityService: CommunityService) {
+    this.createCommunityForm = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl('')
+  });
+  this.communityModel = {
+    name: '',
+    description: ''
+    }
+  }
+
+  ngOnInit(){
+    this.createCommunityForm = new FormGroup({
+      name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]),
+      description: new FormControl('',Validators.required)
+    })
+  }
+  HomePage(){
+    this.router.navigate(['/posts']);
+  }
+  cancel() {
+    this.router.navigateByUrl('/posts');
+  }
+  createCommunity(){
+    this.communityModel.name = this.createCommunityForm.get('name')?.value;
+    this.communityModel.description = this.createCommunityForm.get('description')?.value;
+    this.communityService.createCommunity(this.communityModel).subscribe(data => {
+      console.log(data);
+      this.HomePage();
+
+    })
+  }
+
+}

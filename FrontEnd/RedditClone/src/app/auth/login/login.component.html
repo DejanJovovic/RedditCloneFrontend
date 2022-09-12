@@ -1,48 +1,47 @@
-<div class="login-section">
-    <div class="row justify-content-center">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header" style="text-align: center"><h4>Login</h4></div>
-                <div class="card-body">
-                    <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <div class="form-group row">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
-                            <div class="col-md-6">
-                                <input type="text" id="user_name" class="form-control" [formControlName]="'username'" name="user_name" required
-                                    autofocus>
-                                <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
-                                   Please provide a valid username
-                                </span>                                    
-                            </div>
-                        </div>
- 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                            <div class="col-md-6">
-                                <input type="password" id="password" class="form-control" [formControlName]="'password'" name="password" required>
-                                <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
-                                  Password cannot be empty
-                                </span>                                
-                            </div>
-                        </div>
- 
-                        <span class="col-md-6 offset-md-4">
-                            <button type="submit" class="login">
-                                Login
-                            </button>
-                            <span style="padding-left: 15px">New User? <a routerLink="/signup">SIGN UP</a></span>
-                        </span>   
-                        <div class="login-failed" *ngIf='this.isError'>
-                             <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>   
-                        </div>
-                        <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.registerSuccessMessage.length > 0">
-                            <p class="register-success-text">{{registerSuccessMessage}}</p>   
-                       </div>                       
-                    </form>
-                </div>
-            </div>
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="../../assets/images/LoginSlika.png" 
+            class="img-fluid" alt="Sample image">
         </div>
-        <div class="col-md-3"></div>
+        
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          
+
+            <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h1>
+
+            <form class="form-login" [formGroup] ="loginForm" (submit)="submit()">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="username">Username</label>
+              <input formControlName="'password'" type="email" class="form-control" placeholder="Enter username" />
+              <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">
+                Please provide a valid username
+             </span>
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label class="form-label" for="form3Example4">Password</label>
+              <input  formControlName="password" type="password" class="form-control"
+                placeholder="Enter password" />
+                <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">
+                    Password cannot be empty
+                  </span> 
+              
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              <p class="small mb-5 pb-lg-2">New to Reddit? <a [routerLink]="['/signup']"
+                  class="link-danger">SignUp</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+
+  </section>

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/clone'),
+      dir: require('path').join(__dirname, './coverage/reddit-clone'),
       subdir: '.',
       reporters: [
         { type: 'html' },
