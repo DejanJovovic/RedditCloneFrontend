@@ -10,6 +10,10 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { EditPostComponent } from './post/edit-post/edit-post.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
+import { EditCommentComponent } from './comment/edit-comment/edit-comment.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { ViewPostComponent } from './post/view-post/view-post.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -18,7 +22,11 @@ const routes: Routes = [
   { path: 'create-community', component: CreateCommunityComponent},
   { path: 'community-list', component: CommunityListComponent},
   { path: 'view-community/:id', component: ViewCommunityComponent},
-  { path: 'create-post/id', component: CreatePostComponent},
+  { path: 'view-post/:id', component: ViewPostComponent},
+  { path: 'create-comment/:id', component: CreateCommentComponent},
+  { path: 'updateComment/:id', component: EditCommentComponent},
+  { path: 'comment-list', component: CommentListComponent},
+  { path: 'create-post/:id', component: CreatePostComponent},
   { path: 'post-list', component: PostListComponent},
   { path: 'updatePost/:id', component: EditPostComponent},
   { path: 'editCommunity/:id', component: EditCommunityComponent}

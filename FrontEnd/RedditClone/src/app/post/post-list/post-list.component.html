@@ -17,13 +17,15 @@
       <!-- <button (click)="upvote(post.id)">Vote up</button> -->
   
       <div class="card-body">
+        
           <div class="small text-muted">January 1, 2022</div>
-          <h2 class="card-title h4">{{post.title}}</h2>
+          <a routerLink="/view-post/{{post.id}}">{{post.title}}</a>
           <p class="card-text">{{post.text}}</p>
   
       </div>
-      <button (click)="deletePost(post.id)">remove</button>
+      <button (click)="deletePost(post.id)">Remove</button>
       <button (click)="editPost(post.id)">Update</button>
+
   
   </div>
   

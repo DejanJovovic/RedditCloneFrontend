@@ -26,6 +26,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommunityListComponent } from './community/community-list/community-list.component';
 import { PostListComponent } from './post/post-list/post-list.component';
+import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
+import { EditCommentComponent } from './comment/edit-comment/edit-comment.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { ViewCommentComponent } from './comment/view-comment/view-comment.component';
 
 
 @NgModule({
@@ -46,7 +50,11 @@ import { PostListComponent } from './post/post-list/post-list.component';
     EditPostComponent,
     EditCommunityComponent,
     CommunityListComponent,
-    PostListComponent
+    PostListComponent,
+    CreateCommentComponent,
+    EditCommentComponent,
+    CommentListComponent,
+    ViewCommentComponent
   ],
   imports: [
    BrowserModule,

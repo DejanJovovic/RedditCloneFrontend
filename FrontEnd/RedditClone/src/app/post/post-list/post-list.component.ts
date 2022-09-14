@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faArrowUp , faArrowDown} from '@fortawesome/free-solid-svg-icons';
+import { CommentListComponent } from 'src/app/comment/comment-list/comment-list.component';
+import { CommentListModel } from 'src/app/comment/commentListModel';
 import { PostServiceService } from 'src/app/services/post.service.service';
 import { ReactionService } from 'src/app/services/reaction.service';
+import { CommentService } from 'src/app/services/comment.service';
 
 
 import { PostModel } from '../postModel';
@@ -25,7 +28,7 @@ export class PostListComponent implements OnInit {
  
 
 
-  constructor(private router: Router,private reactionService: ReactionService,private postService: PostServiceService) { }
+  constructor(private router: Router,private reactionService: ReactionService,private postService: PostServiceService, private commentService : CommentService) { }
 
   ngOnInit(): void{
 
@@ -67,5 +70,6 @@ deletePost(id:number){
 editPost(id:number){
   this.router.navigate(['updatePost',id]);
 }
-   
+
+
 }

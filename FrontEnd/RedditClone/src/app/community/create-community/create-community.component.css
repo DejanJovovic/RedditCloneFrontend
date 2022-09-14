@@ -17,15 +17,15 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
-    color: #1c1c1c;
+    color: blue;
     -ms-flex: 1;
     flex: 1;
    
   }
   
   .btnSuccess {
-    background-color: #38694e;
-    border-color: #1c461c;
+    background-color: #3355FF;
+    border-color: #33DDFF;
     color: aliceblue;
     fill: #040c13;
     border: 1px solid;
